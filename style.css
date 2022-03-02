@@ -30,22 +30,39 @@ main {
 }
 
 .container {
-    width: 30vw;
-    height: 30vw;
+    width: 700px;
+    height: 700px;
     display: flex;
     flex-wrap: wrap;
 
 }
 
 .container > div {
-    width: 3vw;
-    height: 3vw;
     display: flex;
     justify-content: center;
     align-items: center;
     border: 1px solid black;
 }
 
+.small {
+    width: 10%;
+    height: 10%;
+}
+
+.medium {
+    width: calc(100% / 9);
+    height: calc(100% / 9);
+}
+
+.large {
+    width: calc(100% / 7);
+    height: calc(100% / 7);
+}
+
 footer {
     padding: 20px 100px;
+}
+
+.bg-change {
+    background-color: aqua;
 }
