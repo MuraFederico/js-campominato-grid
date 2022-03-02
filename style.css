@@ -1,0 +1,34 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header {
+    margin: 20px auto;
+    width: 70%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#difficulty {
+    width: 150px;
+}
+
+#play {
+    padding: 0 2rem;
+}
+
+main {
+    width: 100%;
+    height: calc(100vh - 100px);
+    background-color: #7fffd4;
+}
+
+.container {
+    width: 50%;
+    display: flex;
+    flex-wrap: wrap;
+
+}
