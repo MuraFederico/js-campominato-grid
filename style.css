@@ -22,13 +22,30 @@ header {
 
 main {
     width: 100%;
-    height: calc(100vh - 100px);
+    height: calc(100vh - 140px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-color: #7fffd4;
 }
 
 .container {
-    width: 50%;
+    width: 30vw;
+    height: 30vw;
     display: flex;
     flex-wrap: wrap;
 
+}
+
+.container > div {
+    width: 3vw;
+    height: 3vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid black;
+}
+
+footer {
+    padding: 20px 100px;
 }
