@@ -34,7 +34,8 @@ main {
     height: 700px;
     display: flex;
     flex-wrap: wrap;
-
+    justify-content: center;
+    align-items: center;
 }
 
 .container > div {
@@ -63,6 +64,10 @@ footer {
     padding: 20px 100px;
 }
 
-.bg-change {
+.bg-change-safe {
     background-color: aqua;
+}
+
+.bg-change-bomb {
+    background-color: red;
 }
