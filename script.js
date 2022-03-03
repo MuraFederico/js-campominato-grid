@@ -1,8 +1,9 @@
 const difficultyInput = document.querySelector('#difficulty');
 const btnPlay = document.querySelector('#play');
-
-
+const main = document.querySelector('main')
+let safeCounter = 0;
 btnPlay.addEventListener('click', function(){
+    safeCounter = 0;
     let difficulty = difficultyInput.value;
     if (difficulty == 'easy') {
 
@@ -46,10 +47,14 @@ btnPlay.addEventListener('click', function(){
     }
 })
 
+///////// GENERAZIONE GRIGLIA DI GIOCO /////////
+
 function gridGenerator(squaresNumber) {
+    const output = document.querySelector('.result');
     const container = document.querySelector('.container');
 
     container.innerHTML = '';
+    output.innerHTML = '';
 
     for (let i = 1; i <= squaresNumber; i++) {
 
@@ -61,13 +66,41 @@ function gridGenerator(squaresNumber) {
     }
 }
 
+///////// GESTIONE CLICK DELLE CELLE E CONTROLLO STATO PARITA /////////
+
 function squareSelection() {
+    const output = document.querySelector('.result');
+    const square = document.querySelectorAll('.square');
+    const bomb = document.querySelectorAll('.bomb');
+    let safeSquareLeft = square.length -17 - safeCounter;
+    let gameEnded
+
+
     if(this.classList.contains('bomb')) {
         this.classList.add('bg-change-bomb');
+        output.innerHTML = `hai perso score: ${safeCounter}`
+        output.classList.add('show');
+        safeCounter = 0;
+        gameEnded = true;
+        square.forEach(square => square.removeEventListener('click', squareSelection));
+        bomb.forEach(bomb => bomb.classList.add('bg-change-bomb'));
+        // reset(gameEnded);
     }else {
         this.classList.add('bg-change-safe');
+        safeCounter++;
     }
+
+    if(safeSquareLeft == 0) {
+        output.innerHTML = 'hai vinto!'
+        output.classList.add('show');
+        safeCounter = 0;
+        square.forEach(square => square.removeEventListener('click', squareSelection));
+        // reset(gameEnded);
+    }
+    console.log(safeSquareLeft);
 }
+
+///////// ASSEGNAZIONE CLASSE BOMB /////////
 
 function bombAssignment(bombList) {
     const square = document.querySelectorAll('.square');
@@ -75,6 +108,8 @@ function bombAssignment(bombList) {
         square[bombList[i]].classList.add('bomb')    
     }
 }
+
+///////// GENERAZIONE LISTA DI BOMBE /////////
 
 function bombGeneration(squaresNumber) {
     const arrBombList = [];
@@ -88,4 +123,18 @@ function bombGeneration(squaresNumber) {
     }
     console.log(arrBombList);
     return arrBombList;
+}
+
+function reset(gameEnded) {
+    // if(gameEnded) {
+    //     main.addEventListener('click', function() {
+    //         const output = document.querySelector('.result');
+    //         const container = document.querySelector('.container');
+    
+    //         container.innerHTML = '';
+    //         output.innerHTML = '';
+    //     })
+    //     gameEnded = false;
+    //     console.log(gameEnded)
+    // }
 }

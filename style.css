@@ -24,9 +24,15 @@ main {
     width: 100%;
     height: calc(100vh - 140px);
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     background-color: #7fffd4;
+}
+
+.result {
+    visibility: hidden;
+
 }
 
 .container {
@@ -70,4 +76,10 @@ footer {
 
 .bg-change-bomb {
     background-color: red;
+}
+
+
+
+.show {
+    visibility: visible;
 }
